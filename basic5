@@ -1,0 +1,84 @@
+#company logo
+
+import math
+import os
+import random
+import re
+import sys
+from collections import Counter
+
+
+
+if __name__ == '__main__':
+    s = input()
+    counter = Counter(s)
+    
+    # Sort by descending count, then alphabetically
+    most_common = sorted(counter.items(), key=lambda x: (-x[1], x[0]))
+    
+    for char, count in most_common[:3]:
+        print(char, count)
+
+####################################################################################
+
+#piling up
+
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    cubes = list(map(int, input().split()))
+    
+    left, right = 0, n - 1
+    top = float('inf')
+    possible = True
+    
+    while left <= right:
+        if cubes[left] >= cubes[right]:
+            pick = cubes[left]
+            left += 1
+        else:
+            pick = cubes[right]
+            right -= 1
+        
+        if pick > top:
+            possible = False
+            break
+        top = pick
+    
+    print("Yes" if possible else "No")
+
+##############################################################################
+
+#maxmization
+from itertools import product
+
+K, M = map(int, input().split())
+
+lists = []
+for _ in range(K):
+    lst = list(map(int, input().split()))[1:]  # skip the first number (size)
+    lists.append(lst)
+
+
+def compute_value(comb):
+    return sum(x**2 for x in comb) % M
+
+max_value = max(compute_value(comb) for comb in product(*lists))
+
+print(max_value)
+
+#################################################################################
+
+#sorting
+
+s = input()
+
+lower = sorted([c for c in s if c.islower()])
+upper = sorted([c for c in s if c.isupper()])
+odd_digits = sorted([c for c in s if c.isdigit() and int(c) % 2 != 0])
+even_digits = sorted([c for c in s if c.isdigit() and int(c) % 2 == 0])
+
+result = ''.join(lower + upper + odd_digits + even_digits)
+print(result)
+
