@@ -1,0 +1,80 @@
+#ordered dictionary
+from collections import OrderedDict
+
+n = int(input())
+items = OrderedDict()
+
+for _ in range(n):
+    name, price = input().rsplit(' ', 1)
+    price = int(price)
+    
+    if name in items:
+        items[name] += price
+    else:
+        items[name] = price
+
+for name, net_price in items.items():
+    print(name, net_price)
+
+######################################################################
+
+#ordered word
+
+from collections import OrderedDict
+
+n = int(input())
+words = OrderedDict()
+
+for _ in range(n):
+    w = input().strip()
+    if w in words:
+        words[w] += 1
+    else:
+        words[w] = 1
+
+print(len(words))
+print(*words.values())
+
+####################################################################
+
+#deque
+from collections import deque
+
+d = deque()
+n = int(input())
+
+for _ in range(n):
+    cmd = input().split()
+    
+    if cmd[0] == "append":
+        d.append(cmd[1])
+    elif cmd[0] == "appendleft":
+        d.appendleft(cmd[1])
+    elif cmd[0] == "pop":
+        d.pop()
+    elif cmd[0] == "popleft":
+        d.popleft()
+
+print(*d)
+
+###################################################################
+#Iterables and Iterators
+
+from math import comb
+
+n = int(input())
+letters = input().split()
+k = int(input())
+
+num_a = letters.count('a')
+num_not_a = n - num_a
+
+if k > num_not_a:
+    prob_no_a = 0
+else:
+    prob_no_a = comb(num_not_a, k) / comb(n, k)
+
+prob_at_least_one_a = 1 - prob_no_a
+
+print(f"{prob_at_least_one_a:.3f}")
+
