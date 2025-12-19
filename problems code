@@ -1,0 +1,276 @@
+if __name__ == '__main__':
+    string = "Hello, World!"
+    print(string)
+
+import math
+import os
+import random
+import re
+import sys
+
+
+
+if __name__ == '__main__':
+    n = int(input().strip())
+
+
+if n % 2 != 0:
+    print("Weird")
+elif 2 <= n <= 5:
+    print("Not Weird")
+elif 6 <= n <= 20:
+    print("Weird")
+else:
+    print("Not Weird")
+
+if __name__ == '__main__':
+    a = int(input().strip())
+    b = int(input().strip())
+    print(a + b)
+    print(a - b)
+    print(a * b)
+
+if __name__ == '__main__':
+    a = int(input().strip())
+    b = int(input().strip())
+
+    print(a // b)
+    print(a / b)
+
+if __name__ == '__main__':
+    n = int(input())
+    
+
+    for i in range(n):
+        print(i * i)
+    
+def is_leap(year):
+    leap = False
+    
+    # Write your logic here
+    
+    if year % 400 == 0:
+        return True
+        
+    if year % 100 == 0:
+        return False
+        
+    if year % 4 == 0:
+        return True
+        
+    return leap
+
+year = int(input())
+
+if __name__ == '__main__':
+    n = int(input())
+    
+    for i in range(1, n + 1):
+        print(i, end="")
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+t = int(input())
+
+for _ in range(t):
+    a, b = input().split()
+    try:
+        print(int(a) // int(b))
+    except (ZeroDivisionError, ValueError) as e:
+        print("Error Code:", e)
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import OrderedDict
+
+n = int(input())
+items = OrderedDict()
+
+for _ in range(n):
+    name, price = input().rsplit(' ', 1)
+    price = int(price)
+    
+    if name in items:
+        items[name] += price
+    else:
+        items[name] = price
+
+for name, net_price in items.items():
+    print(name, net_price)
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import OrderedDict
+
+n = int(input())
+items = OrderedDict()
+
+for _ in range(n):
+    name, price = input().rsplit(' ', 1)
+    price = int(price)
+    
+    if name in items:
+        items[name] += price
+    else:
+        items[name] = price
+
+for name, net_price in items.items():
+    print(name, net_price)
+
+import re
+
+t = int(input())
+for _ in range(t):
+    pattern = input().strip()
+    try:
+        re.compile(pattern)
+        print("True")
+    except re.error:
+        print("False")
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import OrderedDict
+
+n = int(input())
+words = OrderedDict()
+
+for _ in range(n):
+    w = input().strip()
+    if w in words:
+        words[w] += 1
+    else:
+        words[w] = 1
+
+print(len(words))
+print(*words.values())
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import deque
+
+d = deque()
+n = int(input())
+
+for _ in range(n):
+    cmd = input().split()
+    
+    if cmd[0] == "append":
+        d.append(cmd[1])
+    elif cmd[0] == "appendleft":
+        d.appendleft(cmd[1])
+    elif cmd[0] == "pop":
+        d.pop()
+    elif cmd[0] == "popleft":
+        d.popleft()
+
+print(*d)
+
+import math
+import os
+import random
+import re
+import sys
+
+
+
+if __name__ == '__main__':
+    s = input()
+
+
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    cubes = list(map(int, input().split()))
+    
+    left, right = 0, n - 1
+    top = float('inf')
+    possible = True
+    
+    while left <= right:
+        if cubes[left] >= cubes[right]:
+            pick = cubes[left]
+            left += 1
+        else:
+            pick = cubes[right]
+            right -= 1
+        
+        if pick > top:
+            possible = False
+            break
+        top = pick
+    
+    print("Yes" if possible else "No")
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from math import comb
+
+# Read input
+n = int(input())
+letters = input().split()
+k = int(input())
+
+# Count occurrences of 'a'
+num_a = letters.count('a')
+num_not_a = n - num_a
+
+# Probability of selecting k indices with **no 'a'**
+if k > num_not_a:
+    prob_no_a = 0
+else:
+    prob_no_a = comb(num_not_a, k) / comb(n, k)
+
+# Probability of selecting **at least one 'a'**
+prob_at_least_one_a = 1 - prob_no_a
+
+# Print result rounded to 3 decimal places
+print(f"{prob_at_least_one_a:.3f}")
+
+s = input()
+
+lower = sorted([c for c in s if c.islower()])
+upper = sorted([c for c in s if c.isupper()])
+odd_digits = sorted([c for c in s if c.isdigit() and int(c) % 2 != 0])
+even_digits = sorted([c for c in s if c.isdigit() and int(c) % 2 == 0])
+
+result = ''.join(lower + upper + odd_digits + even_digits)
+print(result)
+
+from itertools import product
+
+# Read input
+K, M = map(int, input().split())
+
+lists = []
+for _ in range(K):
+    lst = list(map(int, input().split()))[1:]  # skip the first number (size)
+    lists.append(lst)
+
+# Function to compute the formula
+def compute_value(comb):
+    return sum(x**2 for x in comb) % M
+
+# Generate all combinations and find the maximum value
+max_value = max(compute_value(comb) for comb in product(*lists))
+
+print(max_value)
+
+
+from math import comb
+
+# Read input
+n = int(input())
+letters = input().split()
+k = int(input())
+
+# Count occurrences of 'a'
+num_a = letters.count('a')
+num_not_a = n - num_a
+
+# Probability of selecting k indices with **no 'a'**
+if k > num_not_a:
+    prob_no_a = 0
+else:
+    prob_no_a = comb(num_not_a, k) / comb(n, k)
+
+# Probability of selecting **at least one 'a'**
+prob_at_least_one_a = 1 - prob_no_a
+
+# Print result rounded to 3 decimal places
+print(f"{prob_at_least_one_a:.3f}")
